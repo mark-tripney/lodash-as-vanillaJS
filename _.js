@@ -11,7 +11,8 @@ const _ = {
     /*
     Checks if number is between start and up to, but not including, end.
     If end is not specified, it's set to start; start is then set to 0.
-    If start is greater than end, the params are swapped to support negative ranges.
+    If start is greater than end, the params are swapped to support negative
+    ranges.
     */
     if (!end) {
       end = start;
@@ -28,7 +29,8 @@ const _ = {
   words(str) {
     /*
     Splits string into an array of its words.
-    A word is defined by a space-separated string of characters, so each space character indicates the end of one word and the start of the next.
+    A word is defined by a space-separated string of characters, so each space
+    character indicates the end of one word and the start of the next.
     Note: This does not (currently) include Lodash's pattern parameter.
     */
     return str.split(' ');
@@ -36,8 +38,9 @@ const _ = {
 
   pad(str, len, char = ' ') {
     /*
-    Pads, with char, string on the left and right sides if it's shorter than length.
-    Padding characters are truncated if they can't be evenly divided by length.
+    Pads, with char, string on the left and right sides if it's shorter than
+    length. Padding characters are truncated if they can't be evenly divided by
+    length.
     */
     if (str.length >= len) {
       return str;
@@ -64,7 +67,9 @@ const _ = {
 
   invert(obj) {
     /*
-    Creates an object composed of the inverted keys and values of object. If object contains duplicate values, subsequent values overwrite property assignments of previous values.
+    Creates an object composed of the inverted keys and values of object. If
+    object contains duplicate values, subsequent values overwrite property
+    assignments of previous values.
     */
     const objAsArray = Object.entries(obj);
     objAsArray.map(element => {
