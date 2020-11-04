@@ -77,7 +77,54 @@ const _ = {
       element[0] = element[1].toString();
       element[1] = temp;
     });
-
     return Object.fromEntries(objAsArray);
+  },
+
+  findKey(obj, predicate) {
+    /*
+    Returns the first key with a value that returns truthy from the predicate
+    function, or undefined if there is none.
+    */
+    for (const key in obj) {
+      const value = obj[key];
+      const predicateReturn = predicate(value);
+      if (predicateReturn) return key;
+    }
+    return undefined;
+  },
+
+  drop(arr, n = 1) {
+    /*
+    Creates a slice of an array with n elements dropped from the beginning
+    (with a default of 1).
+    */
+    const slicedArr = arr.slice(n);
+    return slicedArr;
+  },
+
+  dropWhile(arr, predicate) {
+    /*
+    Creates a slice of array excluding elements dropped from the beginning.
+    Elements are dropped until predicate returns falsey. The predicate is
+    invoked with three arguments: (value, index, array).
+    */
+    const sliceIndex = arr.findIndex(
+      (element, index) => !predicate(element, index, arr)
+    );
+    const slicedArray = this.drop(arr, sliceIndex);
+    return slicedArray;
+  },
+
+  chunk(arr, size = 1) {
+    /*
+    Creates an array of elements split into groups the length of size. If array
+    can't be split evenly, the final chunk will be the remaining elements.
+    */
+    const chunkArray = [];
+    for (let i = 0; i < arr.length; i = size) {
+      size += i;
+      chunkArray.push(arr.slice(i, size));
+    }
+    return chunkArray;
   },
 };
